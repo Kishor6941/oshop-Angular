@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -12,18 +9,15 @@ import "firebase/firestore";
 })
 export class NavbarComponent implements OnInit {
 
-  user: firebase.User | null | undefined;
 
-  constructor(public afAuth : AngularFireAuth) { 
-    afAuth.authState.subscribe(user => {
-      this.user = user      
-    } );
+  constructor(public authservice : AuthService) { 
+    
   }
 
   ngOnInit(): void {
 
   }
   logout() {
-    this.afAuth.signOut();
+    this.authservice.logout();
   }
 }
