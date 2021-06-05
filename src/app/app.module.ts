@@ -20,6 +20,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { UserService } from './user.service';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { UserService } from './user.service';
   ],
   providers: [AuthService,
   AuthGuardService,
-UserService],
+UserService,
+AdminAuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

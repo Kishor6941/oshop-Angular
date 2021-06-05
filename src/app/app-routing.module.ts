@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
@@ -22,8 +24,23 @@ const routes: Routes = [
   { path:'order-success', component: OrderSuccessComponent , canActivate: [AuthGuardService] },
   { path:'my/orders', component: MyOrdersComponent , canActivate: [AuthGuardService] },
   
-  { path:'admin/products', component: AdminProductsComponent , canActivate: [AuthGuardService] },
-  { path:'admin/orders', component: AdminOrdersComponent , canActivate: [AuthGuardService] },
+  { 
+    path:'admin/products',
+     component: AdminProductsComponent , 
+     canActivate: [AuthGuardService, AdminAuthGuardService]
+     },
+
+     { 
+      path:'admin/products/new',
+       component: ProductFormComponent , 
+       canActivate: [AuthGuardService, AdminAuthGuardService]
+       },
+
+  { 
+    path:'admin/orders',
+     component: AdminOrdersComponent , 
+     canActivate: [AuthGuardService, AdminAuthGuardService] 
+    },
 
 ];
 
